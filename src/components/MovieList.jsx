@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ImageTemp from "./../assets/temp-1.jpeg";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Modal from 'react-modal';
-import YouTube from "react-youtube";
+import { MovieContext } from "../context/MovieProvider";
+// import Modal from 'react-modal';
+// import YouTube from "react-youtube";
 
 
 
-const opts = {
-  height: '590',
-  width: '840',
-  playerVars: {
-    // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
-  },
-};
+// const opts = {
+//   height: '590',
+//   width: '840',
+//   playerVars: {
+//     // https://developers.google.com/youtube/player_parameters
+//     autoplay: 1,
+//   },
+// };
 
 const responsive = {
   superLargeDesktop: {
@@ -39,31 +40,33 @@ const responsive = {
 
 const MovieList = ({ title, data }) => {
 
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  const [trailerKey, setTrailerKey] = useState("");
+    const {handleTrailer} = useContext(MovieContext);
 
-  const handleTrailer = async (id) => {
-    setTrailerKey('');
-    try {
-      const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
-        },
-      };
+  // const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  // const [trailerKey, setTrailerKey] = useState("");
 
-      const movieKey = await fetch(url, options);
-      const data = await movieKey.json();
-      setTrailerKey(data.results[0].key);
-      setModalIsOpen(true);
+  // const handleTrailer = async (id) => {
+  //   setTrailerKey('');
+  //   try {
+  //     const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
+  //     const options = {
+  //       method: 'GET',
+  //       headers: {
+  //         accept: 'application/json',
+  //         Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
+  //       },
+  //     };
 
-    } catch (error) {
-      setModalIsOpen(false);
-      console.log(error)
-    }
-  };
+  //     const movieKey = await fetch(url, options);
+  //     const data = await movieKey.json();
+  //     setTrailerKey(data.results[0].key);
+  //     setModalIsOpen(true);
+
+  //   } catch (error) {
+  //     setModalIsOpen(false);
+  //     console.log(error)
+  //   }
+  // };
 
   return (
     <div className="text-white p-10 mb-10">
@@ -81,16 +84,16 @@ const MovieList = ({ title, data }) => {
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-4 left-2">
+                <div className="absolute bottom-4 left-6">
                   <p className="uppercase text-md">{item.title || item.original_title}</p>
                 </div>
               </div>
             </div>
           ))}
       
-      </Carousel>;
+      </Carousel>
 
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         style={{
@@ -110,7 +113,7 @@ const MovieList = ({ title, data }) => {
         contentLabel="Example Modal"
       >
         <YouTube videoId={trailerKey} opts={opts} />;
-      </Modal>
+      </Modal> */}
       
     </div>
   );

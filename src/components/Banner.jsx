@@ -2,7 +2,7 @@ import React from "react";
 
 import IconRating from "../assets/rating.png";
 import IconRatingHalf from "../assets/rating-half.png";
-import ImgTrailer from "../assets/temp-1.jpeg";
+import ImgTrailer from "../assets/temp-3.jpg";
 import IconPlay from "../assets/play-button.png";
 
 const Banner = () => {
@@ -16,7 +16,7 @@ const Banner = () => {
           </p>
 
           <div className="flex flex-col space-y-5">
-            <h1 className="text-white text-[40px] font-bold">Nghe nói vợ thích anh</h1>
+            <h1 className="text-white text-[40px] font-bold">John Wick 5</h1>
             <div className="flex items-center space-x-3">
               <img src={IconRating} alt="rating" className="w-8 h-8" />
               <img src={IconRating} alt="rating" className="w-8 h-8" />
@@ -33,7 +33,7 @@ const Banner = () => {
             </p>
             <div className="flex items-center space-x-5">
               <button className="px-5 py-3 text-white rounded-sm bg-black font-bold text-sm" >Chi tiết</button>
-              <button className="px-5 py-3 text-white rounded-sm bg-red-600 font-bold text-sm">Xem phim</button>
+              <button className="px-5 py-3 text-white rounded-sm bg-red-600 font-bold text-sm hover:bg-red-800 transition-all duration-500 ease-in-out">Xem phim</button>
             </div>
           </div>
         </div>
