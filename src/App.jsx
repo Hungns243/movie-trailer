@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import MovieList from "./components/MovieList";
 import MovieSearch from "./components/MovieSearch";
 import { MovieProvider } from "./context/MovieProvider";
+import Footer from "./components/Footer";
 
 function App() {
   const [movie, setMovie] = useState([]);
@@ -74,6 +75,7 @@ function App() {
               <MovieList title={"Phim Đề Cử"} data={movieRate} />
             </>
           )}
+          <Footer/>
         </div>
       </MovieProvider>
     </>
